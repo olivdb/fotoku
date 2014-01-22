@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221142748) do
+ActiveRecord::Schema.define(version: 20140122125220) do
 
   create_table "quests", force: true do |t|
     t.string   "title"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 20131221142748) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
+    t.integer  "facebook_id"
   end
+
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
+  add_index "users", ["facebook_id"], name: "index_users_on_facebook_id"
 
 end

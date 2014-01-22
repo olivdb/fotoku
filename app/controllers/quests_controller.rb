@@ -1,6 +1,9 @@
 class QuestsController < ApplicationController
   #before_action :signed_in_user
-  skip_before_filter :verify_authenticity_token 
+  skip_before_filter :verify_authenticity_token # not sure it's ok, see http://stackoverflow.com/questions/20745843/is-this-rails-json-authentication-api-using-devise-secure
+  ## code to test:
+  #skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+  #respond_to :json
 
   def index
   	@quests = Quest.all
