@@ -5,18 +5,20 @@ class SessionsController < ApplicationController
 
 	def create
 		APP_ACCESS_TOKEN = "584021338356865|sGZCpLdBeRJWkMrOhR_-iavW73c"
+		APP_ID = 584021338356865
 		user_access_token = params[:fb_access_token]
 		fb_get_user_info_for_access_token_url_string = "https://graph.facebook.com/debug_token?input_token=#{user_access_token}&access_token=#{APP_ACCESS_TOKEN}"
 		json_object = JSON.parse(open(URI.encode(fb_get_user_info_for_access_token_url_string)).read)
-		if json_obj["data"]["is_valid"]
+		if json_obj["data"]["is_valid"] && json_obj["data"]["app_id"] == 584021338356865
 			user = User.find_by(facebook_id: json_obj["data"]["user_id"])
 			if !user
 				#create user
 			end
-			#respond with success
+			#respond with success, authentication_token
 		else
 			#respond with error
 		end
+
 		
 		#Rails.logger.debug("Received params: app: #{app_name}, uid: #{user_fb_id}")
 
