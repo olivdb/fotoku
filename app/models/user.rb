@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :quests, foreign_key: "owner_id", dependent: :destroy
 	before_create :create_remember_token
+  attr_accessor authentication_token_plain
 
   def User.new_authentication_token
     SecureRandom.urlsafe_base64
@@ -12,8 +13,9 @@ class User < ActiveRecord::Base
 
   private
 
-    def create_remember_token
-      self.authentication_token = User.encrypt(User.new_authentication_token)
+    def create_authentication_token
+      self.authentication_token_plain = User.new_authentication_token
+      self.authentication_token = User.encrypt(self.authentication_token_plain)
     end
 
 end
