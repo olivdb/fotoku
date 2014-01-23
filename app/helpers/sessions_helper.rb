@@ -1,13 +1,14 @@
 module SessionsHelper
 	#attr_accessor authentication_token_plain
-	#def sign_in(user)
+	def sign_in(user)
 		    #authentication_token = User.new_authentication_token
 		    #cookies.permanent[:authentication_token] = authentication_token
 		    #user.update_attribute(:authentication_token, User.encrypt(authentication_token))
-	    #self.current_user = user
+		user.create_authentication_token
+	    self.current_user = user
 		    #self.authentication_token_plain = user.authentication_token_plain
 		    ##authentication_token
-  	#end
+  	end
 
   	def signed_in?
     	!current_user.nil?
