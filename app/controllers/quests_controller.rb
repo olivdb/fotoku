@@ -12,6 +12,10 @@ class QuestsController < ApplicationController
   	json = @quests.to_json include: { owner: { only: [:id, :name] } }, except: [:owner_id, :created_at, :updated_at]
   	json = JSON.pretty_generate(JSON.parse(json)) #only for debug!
 
+  	#authenticate_or_request_with_http_token { |token, options| authentication_token_plain = token }
+
+  	#Rails.logger.debug("request made by #{request.headers['HTTP_AUTH_TOKEN']} ou alors #{request.headers['HTTP_AUTHORIZATION']} !!")
+  	#Rails.logger.debug("curr = #{current_user.name}")
   	render json: json
   end 
 
