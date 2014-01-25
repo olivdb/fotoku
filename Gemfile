@@ -11,6 +11,10 @@ gem 'faker', '1.1.2'
 ##gem 'bootstrap-will_paginate', '0.0.9'
 gem 'multi_json', '1.8.4'
 gem 'figaro'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'rabl'
+gem 'oj' # JSON parser needed for rabl: either `oj` or `yajl-ruby` 
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

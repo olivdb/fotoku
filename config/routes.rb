@@ -1,5 +1,5 @@
 Fotoku::Application.routes.draw do
-  resources :quests, only: [:create, :index]
+  resources :quests, only: [:create, :index, :show]
   resources :sessions, only: [:create]
 
   # The priority is based upon order of creation: first created -> highest priority.
