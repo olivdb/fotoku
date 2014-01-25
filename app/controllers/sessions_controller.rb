@@ -5,13 +5,11 @@ class SessionsController < ApplicationController
 	respond_to :json
 
 	def create
-		app_access_token = "584021338356865|sGZCpLdBeRJWkMrOhR_-iavW73c"
-		app_id = 584021338356865
 		user_access_token = params[:fb_access_token]
 		user_fb_id = params[:fb_id]
-		fb_get_user_info_for_access_token_url_string = "https://graph.facebook.com/debug_token?input_token=#{user_access_token}&access_token=#{app_access_token}"
+		fb_get_user_info_for_access_token_url_string = "https://graph.facebook.com/debug_token?input_token=#{user_access_token}&access_token=#{ENV['FB_APP_ACCESS_TOKEN']}"
 		json_object = JSON.parse(open(URI.encode(fb_get_user_info_for_access_token_url_string)).read)
-		if json_object["data"]["is_valid"] && json_object["data"]["app_id"] == app_id && json_object["data"]["user_id"] == params[:fb_id].to_i
+		if json_object["data"]["is_valid"] && json_object["data"]["app_id"] == ENV['FB_APP_ID'] && json_object["data"]["user_id"] == params[:fb_id].to_i
 			user = User.find_by(facebook_id: json_object["data"]["user_id"])
 			if !user
 				user = User.create(name: params[:fb_name], facebook_id: params[:fb_id])
