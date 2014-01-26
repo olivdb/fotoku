@@ -21,7 +21,7 @@ class QuestsController < ApplicationController
   		@quest.extra_credit_description = nil
   	end
     if @quest.save
-      render :json => { "quest_id" => @quest.id }, :status => :ok
+      #render :json => { "quest_id" => @quest.id }, :status => :ok
     else
       render :json => { "error" => "Invalid quest data" }, :status => :bad_request
     end

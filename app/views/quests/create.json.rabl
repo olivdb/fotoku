@@ -1,10 +1,6 @@
-object @quest
+object @quest => ""
 
-attributes :id, :title
-
-child :owner => :owner do
-	attributes :id, :name
-end
+attributes :id
 
 glue :photo do
 	attributes :url => :photo_url
