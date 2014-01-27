@@ -1,6 +1,6 @@
 object @quest
 
-attributes :id, :title
+attributes :id, :title, :latitude, :longitude
 
 child :owner => :owner do
 	attributes :id, :name

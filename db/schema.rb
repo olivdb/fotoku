@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125190658) do
+ActiveRecord::Schema.define(version: 20140127074518) do
 
   create_table "quests", force: true do |t|
     t.string   "title"
@@ -24,7 +24,12 @@ ActiveRecord::Schema.define(version: 20140125190658) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.string   "extra_credit_description"
+    t.float    "latitude"
+    t.float    "longitude"
   end
+
+  add_index "quests", ["latitude"], name: "index_quests_on_latitude"
+  add_index "quests", ["longitude"], name: "index_quests_on_longitude"
 
   create_table "users", force: true do |t|
     t.string   "name"
