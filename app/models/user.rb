@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :quests, foreign_key: "owner_id", dependent: :destroy
+	has_many :submissions
 	before_create :generate_authentication_token
   	attr_accessor :authentication_token_plain
 

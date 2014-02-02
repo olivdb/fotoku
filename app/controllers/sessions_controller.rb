@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 				user = User.create(name: params[:fb_name], facebook_id: params[:fb_id])
 			end
 			sign_in(user)
-			render :json => {"authentication_token" => self.current_user.authentication_token_plain}, :status => :ok
+			render :json => {"authentication_token" => self.current_user.authentication_token_plain, "user_id" => current_user.id}, :status => :ok
 			return
 		end
 		render :json => {"error" => "There was an error while Loggin in (invalid Facebook access token)"}, :status => :bad_request

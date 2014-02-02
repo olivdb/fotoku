@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127074518) do
+ActiveRecord::Schema.define(version: 20140201144043) do
 
   create_table "quests", force: true do |t|
     t.string   "title"
@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(version: 20140127074518) do
 
   add_index "quests", ["latitude"], name: "index_quests_on_latitude"
   add_index "quests", ["longitude"], name: "index_quests_on_longitude"
+
+  create_table "submissions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "quest_id"
+    t.boolean  "has_extra_credit"
+    t.integer  "status"
+    t.datetime "submitted_at"
+    t.integer  "ranking"
+    t.integer  "difficulty"
+    t.integer  "xp"
+    t.integer  "coins_earned"
+    t.integer  "extra_credit_coins_earned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
