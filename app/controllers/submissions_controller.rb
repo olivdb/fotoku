@@ -8,6 +8,10 @@ class SubmissionsController < ApplicationController
     	end
 	end
 
+	def show
+  		@submission = Submission.find(params[:id])
+  	end
+
 	def submission_params
       params.require(:submission).permit(:photo, :quest_id, :has_extra_credit, :longitude, :latitude)
     end

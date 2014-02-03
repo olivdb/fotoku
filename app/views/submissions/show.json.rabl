@@ -6,6 +6,7 @@ node :photo_url do |submission|
 	submission.photo.url(:medium)
 end
 
+
 child :user => :user do
 	attributes :id
 end
