@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140201144043) do
+ActiveRecord::Schema.define(version: 20140203083328) do
 
   create_table "quests", force: true do |t|
     t.string   "title"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20140201144043) do
     t.integer  "extra_credit_coins_earned"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", force: true do |t|
