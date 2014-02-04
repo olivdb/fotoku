@@ -1,14 +1,21 @@
 class SubmissionsController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	def create
-		@submission = current_user.submissions.build(submission_params)
+		@submission = current_user.submissions.find_by(quest_id: params[:quest_id])
+		if @submission
+			@submission.assign_attributes(submission_params)
+		else
+			@submission = current_user.submissions.build(submission_params)
+		end
+
 		if !@submission.save
 	      Rails.logger.debug("Invalid submission received: #{@submission}")
 	      render :json => { "error" => "Invalid submission data" }, :status => :bad_request
     	end
 	end
 
-	def show
+	#just for test
+	def show 
   		@submission = Submission.find(params[:id])
   	end
 
