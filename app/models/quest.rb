@@ -14,5 +14,4 @@ class Quest < ActiveRecord::Base
 	:size => { :in => 0..1.megabyte },
 	:dimensions => { :width => 640, :height => 640 }
 	#validates :photo, :dimensions => { :width => 300, :height => 300 }
-	
 end

@@ -4,7 +4,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.integer :user_id
       t.integer :quest_id
       t.boolean :has_extra_credit
-      t.integer :status
+      t.integer :status, default: 0
       t.timestamp :submitted_at
       t.integer :ranking
       t.integer :difficulty
