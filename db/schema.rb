@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140208104429) do
     t.integer  "user_id"
     t.integer  "quest_id"
     t.boolean  "has_extra_credit"
-    t.integer  "status"
+    t.integer  "status", default: 0
     t.datetime "submitted_at"
     t.integer  "ranking"
     t.integer  "difficulty"
