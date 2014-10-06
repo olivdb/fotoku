@@ -29,4 +29,5 @@ class SubmissionsController < ApplicationController
 	def submission_params
       params.require(:submission).permit(:photo, :quest_id, :has_extra_credit, :longitude, :latitude)
     end
+
 end

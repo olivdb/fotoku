@@ -27,9 +27,8 @@ class QuestsController < ApplicationController
 
   def create
   	@quest = current_user.quests.build(quest_params)
-  	if @quest.extra_credit_description.blank?
-  		@quest.extra_credit_description = nil
-  	end
+  	@quest.extra_credit_description = nil if @quest.extra_credit_description.blank?
+    
     if @quest.save
       #render :json => { "quest_id" => @quest.id }, :status => :ok
     else
@@ -40,6 +39,11 @@ class QuestsController < ApplicationController
 
   def show
   	@quest = Quest.find(params[:id])
+  end
+
+  def pending_submissions
+    @quest = Quest.find(params[:id])
+    @submissions = @quest.submissions.where(status: Submission::STATUS_PENDING_REVIEW)
   end
 
   private

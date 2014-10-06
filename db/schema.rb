@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208104429) do
+ActiveRecord::Schema.define(version: 20140210184606) do
 
   create_table "quests", force: true do |t|
     t.string   "title"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140208104429) do
     t.integer  "user_id"
     t.integer  "quest_id"
     t.boolean  "has_extra_credit"
-    t.integer  "status", default: 0
+    t.integer  "status"
     t.datetime "submitted_at"
     t.integer  "ranking"
     t.integer  "difficulty"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20140208104429) do
     t.datetime "updated_at"
     t.string   "authentication_token"
     t.integer  "facebook_id"
+    t.integer  "coins"
+    t.integer  "xp"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
