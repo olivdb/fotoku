@@ -2,7 +2,8 @@ class Submission < ActiveRecord::Base
 	belongs_to :quest
 	belongs_to :user
 	has_attached_file :photo, styles: {
-		medium: '320x320>'
+		#medium: '320x320>'
+		normal: '640x480>'
 	}, :default_url => ""#/images/:style/missing.png"
 
 	validate :user_id, presence: true
@@ -10,7 +11,7 @@ class Submission < ActiveRecord::Base
 	validates_attachment :photo, :presence => true, 
 	:content_type => { :content_type => "image/jpg" }, 
 	:size => { :in => 0..1.megabyte },
-	:dimensions => { :width => 640, :height => 640 }
+	:dimensions => { :width => 640, :height => 480 }
 
 	STATUSES = [STATUS_PENDING_REVIEW = 0, STATUS_REJECTED = 1, STATUS_ACCEPTED = 2, STATUS_ACCEPTED_WITH_EXTRA_CREDIT = 3]
     validates :status, inclusion: { in: STATUSES }
